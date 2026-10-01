@@ -21,7 +21,7 @@ Publish the contents of this folder from the `main` branch and repository root i
 
 ## Contact form
 
-The contact page submits through FormSubmit's AJAX endpoint to `rashid@infraanchor.com`; visitors stay on the website. FormSubmit requires a one-time recipient confirmation on the first submission. The form shows a confirmation notice if the service requests activation. Submissions are processed by FormSubmit; see its privacy policy linked on the contact page. Do not put passwords, private API keys or sensitive access information in the form.
+The contact page posts to FormSubmit and returns visitors to the contact page after submission. It does not need a database or server runtime. FormSubmit requires a one-time recipient confirmation on the first submission. The form shows a confirmation notice if the service requests activation. Submissions are processed by FormSubmit; see its privacy policy linked on the contact page. Do not put passwords, private API keys or sensitive access information in the form.
 
 ## Extend
 
