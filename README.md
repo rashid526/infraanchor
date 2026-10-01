@@ -28,7 +28,7 @@ The contact page is ready for direct form submission through Formspree. It does 
 3. Copy the form ID into `window.INFRAANCHOR_FORMSPREE_ID` in `assets/contact-config.js`.
 4. Publish the updated files and test the form from the live domain.
 
-Formspree receives and stores submissions in its dashboard as well as forwarding them to the configured inbox. Until the form ID is added, the page offers a mail-app fallback and a direct email link. The form ID is a public endpoint identifier; do not put passwords or private API keys in static files. Visitors should not submit passwords or sensitive access information.
+Formspree receives and stores submissions in its dashboard as well as forwarding them to the configured inbox. Until the form ID is added, the website form stays inactive and never opens a visitor’s email app. The page shows a direct email link as a temporary alternative. The form ID is a public endpoint identifier; do not put passwords or private API keys in static files. Visitors should not submit passwords or sensitive access information.
 
 ## Extend
 
