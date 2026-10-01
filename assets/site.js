@@ -22,32 +22,32 @@ if (contactForm) {
   const status = contactForm.querySelector('[data-form-status]');
   const note = contactForm.querySelector('[data-form-note]');
   const setStatus = (message, kind = '') => {
-if (!status) return;
+    if (!status) return;
     status.textContent = message;
     status.className = `form-status${kind ? ` is-${kind}` : ''}`;
     status.hidden = !message;
   };
 
   if (formId) {
+    submitButton.disabled = false;
     submitButton.innerHTML = 'Send enquiry <span>↗</span>';
-    if (note) note.textContent = 'Your message is sent through Formspree to our inbox. Please do not include passwords or sensitive access details.';
+    if (note) note.textContent = 'Your message is sent through our online form. Please do not include passwords or sensitive access details.';
   } else {
-    submitButton.innerHTML = 'Open email app <span>↗</span>';
-    if (note) note.innerHTML = 'Online delivery is not connected yet. You can email <a href="mailto:rashid@infraanchor.com">rashid@infraanchor.com</a> directly.';
+    submitButton.disabled = true;
+    submitButton.textContent = 'Online form setup in progress';
+    if (note) note.innerHTML = 'Website form delivery is not connected yet. For now, email <a href="mailto:rashid@infraanchor.com">rashid@infraanchor.com</a>.';
   }
 
   contactForm.addEventListener('submit', async event => {
     event.preventDefault();
-    const values = new FormData(contactForm);
     if (!formId) {
-      const subject = encodeURIComponent(`InfraAnchor enquiry — ${values.get('topic')}`);
-      const body = encodeURIComponent(`Hello InfraAnchor,\n\n${values.get('message')}\n\nName: ${values.get('name')}\nEmail: ${values.get('email')}\nTopic: ${values.get('topic')}`);
-      window.location.href = `mailto:rashid@infraanchor.com?subject=${subject}&body=${body}`;
+      setStatus('Online sending is not connected yet. Please use the email address shown below the form.', 'error');
       return;
     }
 
+    const values = new FormData(contactForm);
     submitButton.disabled = true;
-    submitButton.innerHTML = 'Sending…';
+    submitButton.textContent = 'Sending…';
     setStatus('Sending your message…');
     try {
       const response = await fetch(`https://formspree.io/f/${encodeURIComponent(formId)}`, {
