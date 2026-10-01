@@ -8,6 +8,7 @@ A lightweight, responsive, multi-page static website for InfraAnchor. It uses pl
 - Services: `services.html`
 - Who we help: `industries.html`
 - About: `about.html`
+- Work: `work.html`
 - Guides: `insights.html`
 - Contact: `contact.html`
 
