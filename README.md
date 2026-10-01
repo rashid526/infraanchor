@@ -19,16 +19,9 @@ Open `index.html` in a browser or serve this folder with any static file server.
 
 Publish the contents of this folder from the `main` branch and repository root in GitHub Pages, or upload them to another static host such as Cloudflare Pages. Connect `infraanchor.com` and `www.infraanchor.com` in the host settings, apply that provider’s DNS instructions at the registrar, and enable HTTPS.
 
-## Contact form setup
+## Contact form
 
-The contact page is ready for direct form submission through Formspree. It does not need a database or server. To enable delivery:
-
-1. Create a Formspree form and set its recipient to `rashid@infraanchor.com`.
-2. Verify the recipient address in Formspree.
-3. Copy the form ID into `window.INFRAANCHOR_FORMSPREE_ID` in `assets/contact-config.js`.
-4. Publish the updated files and test the form from the live domain.
-
-Formspree receives and stores submissions in its dashboard as well as forwarding them to the configured inbox. Until the form ID is added, the website form stays inactive and never opens a visitor’s email app. The page shows a direct email link as a temporary alternative. The form ID is a public endpoint identifier; do not put passwords or private API keys in static files. Visitors should not submit passwords or sensitive access information.
+The contact page submits through FormSubmit's AJAX endpoint to `rashid@infraanchor.com`; visitors stay on the website. FormSubmit requires a one-time recipient confirmation on the first submission. The form shows a confirmation notice if the service requests activation. Submissions are processed by FormSubmit; see its privacy policy linked on the contact page. Do not put passwords, private API keys or sensitive access information in the form.
 
 ## Extend
 
