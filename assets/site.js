@@ -17,10 +17,10 @@ document.querySelectorAll('[data-year]').forEach(node => node.textContent = new 
 
 const contactForm = document.querySelector('[data-contact-form]');
 if (contactForm) {
-  const formId = String(window.INFRAANCHOR_FORMSPREE_ID || '').trim();
   const submitButton = contactForm.querySelector('[type="submit"]');
   const status = contactForm.querySelector('[data-form-status]');
   const note = contactForm.querySelector('[data-form-note]');
+  const endpoint = 'https://formsubmit.co/ajax/rashid@infraanchor.com';
   const setStatus = (message, kind = '') => {
     if (!status) return;
     status.textContent = message;
@@ -28,38 +28,35 @@ if (contactForm) {
     status.hidden = !message;
   };
 
-  if (formId) {
-    submitButton.disabled = false;
-    submitButton.innerHTML = 'Send enquiry <span>↗</span>';
-    if (note) note.textContent = 'Your message is sent through our online form. Please do not include passwords or sensitive access details.';
-  } else {
-    submitButton.disabled = true;
-    submitButton.textContent = 'Online form setup in progress';
-    if (note) note.innerHTML = 'Website form delivery is not connected yet. For now, email <a href="mailto:rashid@infraanchor.com">rashid@infraanchor.com</a>.';
-  }
+  submitButton.disabled = false;
+  submitButton.innerHTML = 'Send enquiry <span>↗</span>';
+  if (note) note.innerHTML = 'Your message will be processed by <a href="https://formsubmit.co/privacy.pdf" target="_blank" rel="noopener">FormSubmit</a> and emailed to rashid@infraanchor.com. Please do not include passwords or sensitive access details.';
 
   contactForm.addEventListener('submit', async event => {
     event.preventDefault();
-    if (!formId) {
-      setStatus('Online sending is not connected yet. Please use the email address shown below the form.', 'error');
-      return;
-    }
-
-    const values = new FormData(contactForm);
+    const values = Object.fromEntries(new FormData(contactForm).entries());
+    values._replyto = values.email;
     submitButton.disabled = true;
     submitButton.textContent = 'Sending…';
     setStatus('Sending your message…');
     try {
-      const response = await fetch(`https://formspree.io/f/${encodeURIComponent(formId)}`, {
+      const response = await fetch(endpoint, {
         method: 'POST',
-        body: values,
-        headers: { Accept: 'application/json' }
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify(values)
       });
-      if (!response.ok) throw new Error('Form submission failed');
-      setStatus('Thanks for getting in touch. Your message has been sent.', 'success');
-      contactForm.reset();
+      const result = await response.json();
+      if (!response.ok || result.success === false || result.success === 'false') {
+        throw new Error(result.message || 'The form service rejected this submission.');
+      }
+      if (/confirm|activat/i.test(String(result.message || ''))) {
+        setStatus('The form service sent an activation email to InfraAnchor. The mailbox owner must confirm it before enquiries can be delivered.', 'error');
+      } else {
+        setStatus('Thanks for getting in touch. Your message has been sent to InfraAnchor.', 'success');
+        contactForm.reset();
+      }
     } catch (error) {
-      setStatus('We could not send your message just now. Please email rashid@infraanchor.com directly.', 'error');
+      setStatus('We could not send your message. Please email rashid@infraanchor.com directly.', 'error');
     } finally {
       submitButton.disabled = false;
       submitButton.innerHTML = 'Send enquiry <span>↗</span>';
