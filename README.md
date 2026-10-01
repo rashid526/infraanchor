@@ -1,6 +1,6 @@
 # InfraAnchor website
 
-A lightweight, responsive, multi-page static website for InfraAnchor. It uses plain HTML, CSS and a small JavaScript file—no database, server runtime, CMS, or build step is needed.
+A lightweight, responsive, multi-page static website for InfraAnchor. It uses plain HTML, CSS and a small JavaScript file. No database, server runtime, CMS or build step is needed.
 
 ## Pages
 
@@ -13,15 +13,23 @@ A lightweight, responsive, multi-page static website for InfraAnchor. It uses pl
 
 ## Preview locally
 
-Open `index.html` in a browser, or serve this folder with any static file server. All site files and shared assets are self-contained in this folder. Google Fonts are an optional external enhancement; system fonts provide a fallback.
+Open `index.html` in a browser or serve this folder with any static file server. Google Fonts are an optional external enhancement; system fonts provide a fallback.
 
-## Deploy to infraanchor.com
+## Publish
 
-Upload the contents of this folder to the public document root of any static hosting provider, then connect `infraanchor.com` and `www.infraanchor.com` in the host's domain settings and apply its DNS instructions at the registrar. Enable HTTPS in the host's settings. No DNS records are included here because they depend on the hosting provider.
+Publish the contents of this folder from the `main` branch and repository root in GitHub Pages, or upload them to another static host such as Cloudflare Pages. Connect `infraanchor.com` and `www.infraanchor.com` in the host settings, apply that provider’s DNS instructions at the registrar, and enable HTTPS.
 
-The contact form uses `mailto:` to prepare a message in the visitor's email application; it does not send or store form submissions. To collect form submissions later, connect a hosted form endpoint or add a backend.
+## Contact form setup
+
+The contact page is ready for direct form submission through Formspree. It does not need a database or server. To enable delivery:
+
+1. Create a Formspree form and set its recipient to `rashid@infraanchor.com`.
+2. Verify the recipient address in Formspree.
+3. Copy the form ID into `window.INFRAANCHOR_FORMSPREE_ID` in `assets/contact-config.js`.
+4. Publish the updated files and test the form from the live domain.
+
+Formspree receives and stores submissions in its dashboard as well as forwarding them to the configured inbox. Until the form ID is added, the page offers a mail-app fallback and a direct email link. The form ID is a public endpoint identifier; do not put passwords or private API keys in static files. Visitors should not submit passwords or sensitive access information.
 
 ## Extend
 
-Copy a page, keep the shared header and footer, and link it from the navigation. Add service detail sections with IDs to `services.html`; the home page links directly to the existing sections.
-
+Copy a page, keep the shared header and footer, and add it to the navigation. Add service detail sections with IDs to `services.html`; the home page links to those sections.
