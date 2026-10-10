@@ -391,8 +391,8 @@ p{color:var(--ia-muted)}
 .ia-tile-arrow{transition:transform .25s ease,color .25s ease}
 .ia-service-tile:hover .ia-tile-arrow{transform:translate(2px,-2px);color:#9cfbff}
 .ia-overview-foot{border-top:1px solid #244357;padding-top:13px}
-@keyframes ia-orbit-spin{to{transform:translate(-50%,-50%) rotate(360deg)}}
-@keyframes ia-orbit-spin-reverse{to{transform:translate(-50%,-50%) rotate(-360deg)}}
+@keyframes ia-orbit-spin{to{rotate:360deg}}
+@keyframes ia-orbit-spin-reverse{to{rotate:-360deg}}
 @keyframes ia-pill-breathe{0%,100%{border-color:#2b5b69;box-shadow:0 0 0 0 #52e3d000}50%{border-color:#398d91;box-shadow:0 0 0 4px #52e3d00b}}
 @keyframes ia-status-pulse{0%,100%{opacity:1;box-shadow:0 0 8px #67e7c144}50%{opacity:.62;box-shadow:0 0 16px #67e7c199}}
 @keyframes ia-hub-sheen{0%,64%,100%{left:-55%}28%{left:120%}}
