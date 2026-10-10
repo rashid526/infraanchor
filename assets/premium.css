@@ -285,3 +285,149 @@ p{color:var(--ia-muted)}
 @media(max-width:900px){.impact-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.impact-card:last-child{grid-column:1/-1;min-height:240px}.outcome-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.process-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.service-outcomes-head{grid-template-columns:1fr;gap:14px}}
 @media(max-width:680px){.impact-grid,.outcome-grid,.process-grid{grid-template-columns:1fr}.impact-card:last-child{grid-column:auto;min-height:0}.impact-card{min-height:0;padding:21px}.impact-icon{margin-bottom:17px}.impact-note{align-items:flex-start;flex-wrap:wrap}.impact-note p{flex-basis:calc(100% - 30px)}.impact-note .text-link{margin-left:25px}.service-outcomes-head h2{font-size:30px}.outcome-item{padding:16px}.process-grid{gap:10px}.process-step{padding:19px}.process-bottom{align-items:flex-start;flex-direction:column}.process-bottom .button{width:100%;justify-content:center}}
 @media(prefers-reduced-motion:reduce){[data-reveal]{opacity:1;transform:none;transition:none}.impact-card,.outcome-item,.process-step{transition:none}}
+
+
+/* Shared animated infrastructure hero: identical on Home and Services */
+.hero-art,.services-art{
+  position:relative;
+  isolation:isolate;
+  display:grid;
+  place-items:center;
+  align-self:center;
+  height:auto!important;
+  min-height:0!important;
+  padding:18px 0 22px;
+  overflow:visible!important;
+  transform:none!important;
+}
+.hero-art:before,.services-art:before,
+.hero-art:after,.services-art:after{
+  content:"";
+  display:block;
+  position:absolute;
+  left:50%;
+  top:50%;
+  z-index:-1;
+  border-radius:50%;
+  pointer-events:none;
+  transform:translate(-50%,-50%);
+}
+.hero-art:before,.services-art:before{
+  width:min(86%,430px);
+  aspect-ratio:1;
+  border:1px dashed #3e9bb36b;
+  background:
+    radial-gradient(circle at 50% 0%,#6df2ed 0 3px,transparent 4px),
+    radial-gradient(circle at 100% 50%,#60a9ff 0 3px,transparent 4px),
+    radial-gradient(circle at 50% 100%,#65e9c2 0 3px,transparent 4px);
+  box-shadow:0 0 55px #16a8e40a,inset 0 0 45px #18a7df08;
+  animation:ia-orbit-spin 48s linear infinite;
+}
+.hero-art:after,.services-art:after{
+  width:min(68%,335px);
+  aspect-ratio:1;
+  border:1px solid #4bc9df30;
+  background:radial-gradient(circle at 50% 0%,#73e8ff 0 2px,transparent 3px);
+  box-shadow:0 0 36px #2c9ec40b;
+  animation:ia-orbit-spin-reverse 34s linear infinite;
+}
+.hero-art .ia-overview,.services-art .ia-overview{
+  position:relative;
+  z-index:1;
+  width:100%;
+  max-width:620px;
+  height:auto!important;
+  min-height:460px;
+  margin:0 auto;
+  padding:clamp(20px,2.5vw,28px);
+  gap:17px;
+  border-radius:24px;
+  background:
+    radial-gradient(ellipse at 8% 2%,#17617a55 0%,transparent 42%),
+    radial-gradient(ellipse at 95% 100%,#123f6850 0%,transparent 42%),
+    linear-gradient(145deg,#0d2538f7,#081727fa 75%);
+  box-shadow:inset 0 1px #c5faff12,0 25px 75px #0005,0 0 45px #168bb00b;
+  backdrop-filter:blur(7px);
+}
+.hero-art .ia-overview:before,.services-art .ia-overview:before{
+  background:
+    linear-gradient(125deg,#6ee7ef12,transparent 35%,#6ca8ff0c 70%,transparent),
+    repeating-linear-gradient(0deg,transparent 0 37px,#55d5e707 38px);
+}
+.hero-art .ia-overview-head,.services-art .ia-overview-head,
+.hero-art .ia-overview-hub,.services-art .ia-overview-hub,
+.hero-art .ia-service-grid,.services-art .ia-service-grid,
+.hero-art .ia-overview-foot,.services-art .ia-overview-foot{z-index:2}
+.ia-live-pill{box-shadow:inset 0 1px #ffffff0a,0 0 0 0 #52e3d022;animation:ia-pill-breathe 3.6s ease-in-out infinite}
+.ia-live-pill i,.ia-overview-foot>span:first-child i{animation:ia-status-pulse 2.3s ease-in-out infinite}
+.ia-overview-hub{position:relative;overflow:hidden;transition:border-color .3s ease,box-shadow .3s ease,transform .3s ease}
+.ia-overview-hub:after{
+  content:"";
+  position:absolute;
+  inset:0 auto 0 -55%;
+  width:36%;
+  pointer-events:none;
+  background:linear-gradient(90deg,transparent,#a8fbff16,transparent);
+  transform:skewX(-20deg);
+  animation:ia-hub-sheen 7s ease-in-out infinite;
+}
+.ia-overview-hub:hover{transform:translateY(-2px);border-color:#64dbe7;box-shadow:0 12px 32px #19b8d318}
+.ia-overview-hub-icon{box-shadow:inset 0 0 18px #32b4d210,0 0 20px #24a4d00a}
+.ia-overview-hub-icon img{animation:ia-mark-float 5s ease-in-out infinite}
+.ia-service-tile{position:relative;overflow:hidden;box-shadow:inset 0 1px #ffffff05,0 8px 22px #00000012}
+.ia-service-tile:before{
+  content:"";
+  position:absolute;
+  inset:0;
+  opacity:0;
+  pointer-events:none;
+  background:radial-gradient(circle at 0 0,#65eaf31a,transparent 62%);
+  transition:opacity .3s ease;
+}
+.ia-service-tile:hover:before{opacity:1}
+.ia-service-tile:hover{transform:translateY(-4px) scale(1.008);box-shadow:0 14px 28px #0003,0 0 24px #36d5e90a}
+.ia-tile-icon{transition:transform .3s ease,box-shadow .3s ease}
+.ia-service-tile:hover .ia-tile-icon{transform:translateY(-1px) rotate(-3deg);box-shadow:0 0 20px #4bd9e41c}
+.ia-tile-arrow{transition:transform .25s ease,color .25s ease}
+.ia-service-tile:hover .ia-tile-arrow{transform:translate(2px,-2px);color:#9cfbff}
+.ia-overview-foot{border-top:1px solid #244357;padding-top:13px}
+@keyframes ia-orbit-spin{to{transform:translate(-50%,-50%) rotate(360deg)}}
+@keyframes ia-orbit-spin-reverse{to{transform:translate(-50%,-50%) rotate(-360deg)}}
+@keyframes ia-pill-breathe{0%,100%{border-color:#2b5b69;box-shadow:0 0 0 0 #52e3d000}50%{border-color:#398d91;box-shadow:0 0 0 4px #52e3d00b}}
+@keyframes ia-status-pulse{0%,100%{opacity:1;box-shadow:0 0 8px #67e7c144}50%{opacity:.62;box-shadow:0 0 16px #67e7c199}}
+@keyframes ia-hub-sheen{0%,64%,100%{left:-55%}28%{left:120%}}
+@keyframes ia-mark-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-2px)}}
+@media(max-width:900px){
+ .hero-art,.services-art{width:100%;max-width:620px;margin:0 auto;padding:12px 0 18px}
+ .hero-art .ia-overview,.services-art .ia-overview{min-height:450px}
+ .hero-art:before,.services-art:before{width:min(86%,410px)}
+ .hero-art:after,.services-art:after{width:min(68%,320px)}
+}
+@media(max-width:680px){
+ .hero-art,.services-art{height:auto!important;min-height:0!important;margin:0!important;padding:14px 0 24px;transform:none!important}
+ .hero-art .ia-overview,.services-art .ia-overview{height:auto!important;min-height:0;padding:17px;gap:13px;border-radius:18px}
+ .hero-art:before,.services-art:before{width:88%}
+ .hero-art:after,.services-art:after{width:69%}
+ .hero-art .ia-overview-head,.services-art .ia-overview-head{align-items:flex-start;flex-direction:column;gap:9px}
+ .hero-art .ia-overview-head strong,.services-art .ia-overview-head strong{font-size:19px}
+ .hero-art .ia-overview-hub,.services-art .ia-overview-hub{gap:11px;padding:11px}
+ .hero-art .ia-overview-hub-icon,.services-art .ia-overview-hub-icon{width:45px;height:45px}
+ .hero-art .ia-overview-hub-icon img,.services-art .ia-overview-hub-icon img{width:29px;height:29px}
+ .hero-art .ia-overview-hub strong,.services-art .ia-overview-hub strong{font-size:15px}
+ .hero-art .ia-overview-hub small,.services-art .ia-overview-hub small{font-size:10px}
+ .hero-art .ia-service-grid,.services-art .ia-service-grid{gap:8px}
+ .hero-art .ia-service-tile,.services-art .ia-service-tile{min-height:100px;align-items:flex-start;flex-wrap:wrap;gap:8px;padding:11px}
+ .hero-art .ia-tile-icon,.services-art .ia-tile-icon{width:39px;height:39px;border-radius:10px}
+ .hero-art .ia-tile-icon svg,.services-art .ia-tile-icon svg{width:24px;height:24px}
+ .hero-art .ia-tile-copy,.services-art .ia-tile-copy{width:100%}
+ .hero-art .ia-tile-copy strong,.services-art .ia-tile-copy strong{font-size:12px}
+ .hero-art .ia-tile-copy small,.services-art .ia-tile-copy small{font-size:9px}
+ .hero-art .ia-overview-foot,.services-art .ia-overview-foot{align-items:flex-start;flex-direction:column;gap:5px;font-size:9px}
+}
+@media(prefers-reduced-motion:reduce){
+ .hero-art:before,.services-art:before,.hero-art:after,.services-art:after,
+ .ia-live-pill,.ia-live-pill i,.ia-overview-foot>span:first-child i,
+ .ia-overview-hub:after,.ia-overview-hub-icon img{animation:none!important}
+ .ia-service-tile,.ia-overview-hub,.ia-tile-icon{transition:none!important}
+ .ia-overview-hub:after{display:none}
+}
