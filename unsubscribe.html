@@ -1,62 +1,15 @@
 <!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#f7f9fc">
-<meta name="description" content="Opt out of InfraAnchor email communications.">
-<title>Unsubscribe | InfraAnchor</title>
-<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="assets/styles.css?v=unsubscribe-1">
-<script defer src="assets/site.js"></script>
-<link rel="stylesheet" href="assets/premium.css?v=unified-brand-4"></head>
-<body>
-<a class="skip-link" href="#main">Skip to content</a>
-<header class="site-header"><div class="container nav-wrap">
-<a class="brand" href="index.html" aria-label="InfraAnchor home"><span class="brand-mark"><img src="assets/ia-mark.svg" alt=""></span><span>infra<span class="brand-light">anchor</span></span></a>
-<button class="menu-toggle" aria-expanded="false" aria-controls="site-nav"><span></span><span></span><span class="sr-only">Toggle navigation</span></button>
-<nav id="site-nav" class="site-nav" aria-label="Main navigation">
-<a href="index.html">Home</a><a href="services.html">Services</a><a href="industries.html">Who we help</a><a href="about.html">About</a><a href="work.html">Work</a><a href="insights.html">Guides</a><a class="nav-cta" href="contact.html">Let’s talk <span>↗</span></a>
-</nav></div></header>
-<main id="main">
-<section class="contact-hero">
-<div class="container contact-grid">
-<div>
-<div class="eyebrow"><span class="eyebrow-dot"></span> Email preferences</div>
-<h1>Unsubscribe from<br><em>InfraAnchor emails.</em></h1>
-<p class="hero-lede">If you no longer want to receive outreach or other non-essential emails from InfraAnchor, enter your email address below and submit the request.</p>
-<div class="contact-assurance"><span>✳</span><p>We’ll use the address you provide only to identify your opt-out request. This page does not ask for passwords or sensitive information.</p></div>
-</div>
-<div class="contact-form-card">
-<div class="form-heading"><span class="card-icon icon-blue">✉</span><div><h2>Opt out</h2><p>Enter the email address that received our message.</p></div></div>
-<form action="https://formsubmit.co/rashid@infraanchor.com" method="POST">
-<input type="hidden" name="_subject" value="InfraAnchor email opt-out request">
-<input type="hidden" name="_next" value="https://infraanchor.com/unsubscribe.html?submitted=1">
-<input type="hidden" name="_captcha" value="true">
-<input class="form-honeypot" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
-<label for="unsubscribe-email">Email address</label>
-<input id="unsubscribe-email" type="email" name="email" autocomplete="email" required placeholder="you@example.com">
-<button class="button button-primary form-submit" type="submit">Submit opt-out request <span>↗</span></button>
-<p class="form-fineprint">This sends an opt-out request to InfraAnchor. Because the website is separate from Apollo, the address must also be removed or paused in Apollo before any already-scheduled sequence email can be prevented.</p>
-</form>
-</div>
-</div>
-</section>
-<section class="section section-pad"><div class="container">
-<div class="section-heading"><div><div class="eyebrow">Prefer a direct request?</div><h2>Just email us and say<br><em>“unsubscribe”.</em></h2></div>
-<p>You can also reply to the email you received with “unsubscribe” and we’ll close the loop.</p></div>
-</div></section>
-</main>
-<footer class="site-footer"><div class="container footer-main">
-<div class="footer-brand"><a class="brand brand-footer" href="index.html"><span class="brand-mark"><img src="assets/ia-mark.svg" alt=""></span><span>infra<span class="brand-light">anchor</span></span></a><p>IT infrastructure, made dependable.</p></div>
-<div class="footer-links"><div><b>Explore</b><a href="services.html">Services</a><a href="industries.html">Who we help</a><a href="about.html">About</a><a href="work.html">Work</a><a href="insights.html">Guides</a><a href="unsubscribe.html">Email preferences</a></div><div><b>Get in touch</b><a href="mailto:rashid@infraanchor.com">rashid@infraanchor.com</a><a href="contact.html">Contact InfraAnchor</a></div></div>
-</div><div class="container footer-bottom"><span>© <span data-year></span> InfraAnchor</span><span>Clear advice. Thoughtful delivery.</span><a href="mailto:rashid@infraanchor.com">Email us ↗</a></div></footer>
-<script>
-const params=new URLSearchParams(location.search);
-if(params.get('submitted')==='1'){
- const card=document.querySelector('.contact-form-card');
- if(card) card.innerHTML='<div class="form-heading"><span class="card-icon icon-green">✓</span><div><h2>Request received</h2><p>Thanks. Your opt-out request has been sent to InfraAnchor.</p></div></div><p class="hero-lede" style="margin-top:20px">We’ll use the submitted address to identify and stop future outreach. If you still receive a scheduled Apollo email, reply “unsubscribe” so we can remove the address from the sequence.</p>';
-}
-</script>
-</body>
-</html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Manage your email preferences for InfraAnchor."><meta name="theme-color" content="#202b2d">
+<title>Email Preferences | InfraAnchor</title><link rel="icon" href="assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="assets/fieldwork.css?v=field-notes-1"><script defer src="assets/site.js?v=field-notes-1"></script></head>
+<body><a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="wrap nav-wrap">
+<a class="brand" href="index.html" aria-label="InfraAnchor home"><img src="assets/ia-mark.svg" alt=""><span>infra<span>anchor</span></span></a>
+<button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav"><span></span><span></span><span class="sr-only">Toggle navigation</span></button>
+<nav class="site-nav" id="site-nav" aria-label="Main navigation"><a href="index.html">Home</a><a href="services.html">Services</a><a href="industries.html">Who we help</a><a href="about.html">About</a><a href="work.html">Project experience</a><a href="insights.html">Guides</a><a class="nav-contact" href="contact.html">Talk to us <span>↗</span></a></nav>
+</div></header><main id="main"><section class="page-masthead error-masthead"><div class="wrap"><span class="eyebrow"><span class="eyebrow-rule"></span> EMAIL PREFERENCES</span><h1>Manage email<br><em>preferences.</em></h1><p class="hero-intro">If you received an email from InfraAnchor and no longer wish to receive updates, use the unsubscribe link included in that message or reply to the email requesting removal.</p><a class="button button-orange" href="mailto:rashid@infraanchor.com?subject=Email%20preference%20request">Email InfraAnchor <span>↗</span></a></div></section></main><footer class="site-footer"><div class="wrap footer-main">
+<div class="footer-signoff"><a class="brand brand-footer" href="index.html"><img src="assets/ia-mark.svg" alt=""><span>infra<span>anchor</span></span></a><p>IT infrastructure, made dependable.</p><p class="footer-small">Clear thinking for the systems your business relies on.</p></div>
+<div class="footer-column"><b>Explore</b><a href="services.html">Services</a><a href="industries.html">Who we help</a><a href="work.html">Project experience</a><a href="insights.html">Guides & insights</a></div>
+<div class="footer-column"><b>Company</b><a href="about.html">About InfraAnchor</a><a href="contact.html">Contact</a><a href="unsubscribe.html">Email preferences</a></div>
+<div class="footer-column footer-contact"><b>Start a conversation</b><a href="mailto:rashid@infraanchor.com">rashid@infraanchor.com ↗</a><span>Practical advice. Thoughtful delivery.</span></div>
+</div><div class="wrap footer-bottom"><span>© <span data-year></span> InfraAnchor</span><span>Independent thinking. Connected infrastructure.</span><a href="contact.html">Get in touch ↗</a></div></footer></body></html>
