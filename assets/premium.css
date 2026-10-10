@@ -131,3 +131,45 @@ p{color:var(--ia-muted)}
 @media(max-width:900px){.hero-grid{min-height:0;grid-template-columns:1fr;gap:24px;padding-block:54px 48px}.hero-copy{max-width:720px}.hero-art{height:430px;width:100%;max-width:620px;margin:0 auto}.ia-scene{min-height:0}.page-hero-inner{grid-template-columns:1fr;gap:22px;padding-block:48px}.services-art{height:400px;min-height:0;margin-top:4px}.services-art .ia-scene{height:100%;min-height:0}}
 @media(max-width:680px){.container{width:min(calc(100% - 36px),1160px)}.site-header{height:70px!important}.brand{font-size:19px}.brand-mark{width:35px;height:35px}.hero-grid{padding-block:42px 34px;gap:18px}.hero h1{font-size:clamp(38px,10vw,52px);letter-spacing:-1.8px;line-height:1.08}.hero-lede{font-size:14px;line-height:1.7}.hero-actions{gap:15px;flex-wrap:wrap}.hero-art{height:335px;min-height:0;margin:0}.ia-scene{border-radius:17px}.ia-rack{width:53px;height:135px;top:35%;left:4%}.ia-rack-right{width:49px;height:122px;top:40%;right:4%}.ia-server{height:17px;padding:0 4px;gap:3px}.ia-server b{width:13px}.ia-server span{width:6px}.ia-server i{width:3px;height:3px}.ia-hub{width:92px;height:98px;top:53%;border-radius:15px;gap:5px}.ia-hub img{width:34px;height:34px}.ia-hub-label{font-size:7px;letter-spacing:.5px;max-width:80px}.ia-cloud{width:55px;height:36px;left:40%;top:7%}.ia-status{top:4%;right:3%;width:110px;padding:8px}.ia-status small{font-size:5.5px;letter-spacing:.5px}.ia-status b{font-size:8px;line-height:1.35}.ia-status span{font-size:6.5px}.ia-float-card{left:3%;bottom:4%;width:124px;padding:8px}.ia-float-card small{font-size:5.5px;letter-spacing:.5px}.ia-float-card b{font-size:7px;line-height:1.4}.ia-mini-bars{height:12px;margin-top:6px}.ia-mini-bars i{width:5px}.ia-service-chip{right:3%;bottom:4%;max-width:105px;font-size:6px;padding:7px;letter-spacing:0}.ia-gridfloor{height:26%;bottom:0}.section-pad{padding-block:66px}.section-heading h2,.audience-row h2,.feature-copy h2,.split-panel h2,.about-story h2,.contact-bottom h2{font-size:31px;letter-spacing:-1px}.cta-card{padding:29px 22px!important}.cta-card h2{font-size:29px}.contact-grid h1{font-size:39px}.page-hero h1{font-size:clamp(37px,10vw,50px);letter-spacing:-1.6px}.page-hero-art{height:auto}.services-art{height:335px;min-height:0}.services-art .ia-scene{height:335px;min-height:0}.contact-form-card{padding:20px}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+
+/* Final polish based on page review feedback */
+.button-white,.button-white:visited,.button-white span,.button-white:hover span{
+  color:#061626!important;-webkit-text-fill-color:#061626!important;text-shadow:none!important;
+}
+.button-white{background:linear-gradient(110deg,#73eee9,#a0f4df)!important;border:1px solid #b1fff0!important}
+.cta-decoration{color:#65e8ef12!important}
+.ia-scene{isolation:isolate}
+.ia-cloud{display:flex;align-items:center;justify-content:center}
+.ia-cloud:after{
+ content:"CLOUD SERVICES";position:absolute;top:calc(100% + 1px);left:50%;transform:translateX(-50%);
+ white-space:nowrap;padding:5px 8px;border:1px solid #2d596c;border-radius:5px;
+ background:#0b2135;color:#c6eaf1;font:700 7px/1.2 var(--font-head,Arial,sans-serif);
+ letter-spacing:1px;box-shadow:0 6px 16px #0003
+}
+.ia-rack:before{
+ content:"SERVER · VIRTUAL MACHINES";position:absolute;left:50%;top:-23px;transform:translateX(-50%);
+ white-space:nowrap;padding:5px 7px;border:1px solid #2c5269;border-radius:5px;
+ background:#0b2135;color:#bcd7e5;font:700 7px/1.2 var(--font-head,Arial,sans-serif);
+ letter-spacing:.6px
+}
+.ia-rack-right:before{content:"BACKUP · STORAGE"}
+.ia-server{background:linear-gradient(90deg,#183c53 0%,#102b40 55%,#0c2032 100%)!important}
+.ia-server:after{content:"";display:block;height:3px;width:22px;margin-left:2px;background:repeating-linear-gradient(90deg,#72dce6 0 3px,transparent 3px 6px);opacity:.72}
+.ia-server b{width:24px!important;background:repeating-linear-gradient(90deg,#719bb5 0 3px,transparent 3px 6px)!important}
+.ia-service-chip{font-weight:750!important;letter-spacing:.65px!important}
+.service-card{position:relative;padding-bottom:68px!important}
+.card-arrow{
+ position:absolute!important;right:22px!important;bottom:20px!important;display:grid!important;place-items:center;
+ width:36px;height:36px;border-radius:50%;border:1px solid #376b7c;background:#0e2a3d;
+ color:#8af0e7!important;font-size:19px!important;line-height:1;
+ transition:transform .2s ease,background .2s ease,border-color .2s ease
+}
+.service-card:hover .card-arrow{transform:translate(2px,-2px);background:#123a4c;border-color:#65e8ef}
+@media(max-width:680px){
+ .ia-cloud:after{font-size:6px;letter-spacing:.4px;padding:4px 5px}
+ .ia-rack:before{font-size:5.5px;letter-spacing:0;padding:4px 5px;top:-19px}
+ .ia-rack-right:before{content:"BACKUP"}
+ .ia-rack:before{content:"SERVER / VM"}
+ .service-card{padding-bottom:62px!important}
+ .card-arrow{right:18px!important;bottom:17px!important;width:33px;height:33px}
+}
