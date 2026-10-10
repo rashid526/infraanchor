@@ -37,20 +37,3 @@ if (contactForm) {
     setStatus('Sending your message…');
   });
 }
-
-
-// Progressive enhancement: reveal content as it enters the viewport.
-// Without IntersectionObserver, all content remains visible.
-(() => {
-  const targets = document.querySelectorAll('.impact-card, .outcome-item, .process-step, .section-heading, .service-card, .feature-grid, .audience-row, .service-detail, .cta-card');
-  if (!targets.length || !('IntersectionObserver' in window) || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  targets.forEach((item) => item.setAttribute('data-reveal', ''));
-  const observer = new IntersectionObserver((entries, activeObserver) => {
-    entries.forEach((entry) => {
-      if (!entry.isIntersecting) return;
-      entry.target.classList.add('is-revealed');
-      activeObserver.unobserve(entry.target);
-    });
-  }, { threshold: 0.12, rootMargin: '0px 0px -36px 0px' });
-  targets.forEach((item) => observer.observe(item));
-})();
