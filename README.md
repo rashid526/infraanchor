@@ -1,6 +1,6 @@
 # InfraAnchor website
 
-A lightweight, responsive, multi-page static website for InfraAnchor. It uses plain HTML, CSS and a small JavaScript file. No database, server runtime, CMS or build step is needed.
+A responsive, multi-page static website for InfraAnchor, built with plain HTML, CSS and a small JavaScript file. The cinematic blue/cyan design system is shared across all pages. No database, server runtime, CMS or build step is needed.
 
 ## Pages
 
