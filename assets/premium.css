@@ -431,3 +431,92 @@ p{color:var(--ia-muted)}
  .ia-service-tile,.ia-overview-hub,.ia-tile-icon{transition:none!important}
  .ia-overview-hub:after{display:none}
 }
+
+
+/* Final geometry lock: homepage and Services hero use identical art dimensions */
+.hero-grid,.page-hero-inner{
+  grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important;
+  gap:34px!important;
+  align-items:center!important;
+}
+.hero-grid,.page-hero-inner{
+  min-height:680px!important;
+  padding-block:64px!important;
+}
+.hero-art,.services-art{
+  width:100%!important;
+  max-width:560px!important;
+  min-width:0!important;
+  height:auto!important;
+  min-height:0!important;
+  margin:0 auto!important;
+  padding:18px 0!important;
+  align-self:center!important;
+  justify-self:center!important;
+  transform:none!important;
+}
+.hero-art .ia-overview,.services-art .ia-overview{
+  width:100%!important;
+  max-width:560px!important;
+  min-height:470px!important;
+  height:470px!important;
+  padding:24px!important;
+  gap:17px!important;
+  border-radius:24px!important;
+}
+.hero-art .ia-overview-head,.services-art .ia-overview-head{
+  align-items:center!important;
+  flex-direction:row!important;
+  gap:14px!important;
+}
+.hero-art .ia-overview-head strong,.services-art .ia-overview-head strong{font-size:clamp(17px,1.8vw,22px)!important}
+.hero-art .ia-overview-hub,.services-art .ia-overview-hub{padding:14px 16px!important;gap:15px!important}
+.hero-art .ia-service-grid,.services-art .ia-service-grid{gap:12px!important}
+.hero-art .ia-service-tile,.services-art .ia-service-tile{
+  min-height:91px!important;
+  align-items:center!important;
+  flex-wrap:nowrap!important;
+  gap:12px!important;
+  padding:13px!important;
+}
+.hero-art .ia-tile-copy,.services-art .ia-tile-copy{width:auto!important}
+.hero-art .ia-overview-foot,.services-art .ia-overview-foot{
+  align-items:center!important;
+  flex-direction:row!important;
+  gap:12px!important;
+  font-size:10px!important;
+}
+@media(max-width:900px){
+  .hero-grid,.page-hero-inner{
+    grid-template-columns:minmax(0,1fr)!important;
+    gap:24px!important;
+    min-height:0!important;
+    padding-block:48px!important;
+  }
+  .hero-art,.services-art{max-width:620px!important;padding:12px 0 18px!important}
+  .hero-art .ia-overview,.services-art .ia-overview{max-width:620px!important;min-height:450px!important;height:450px!important}
+}
+@media(max-width:680px){
+  .hero-grid,.page-hero-inner{gap:18px!important;padding-block:42px 30px!important}
+  .hero-art,.services-art{max-width:100%!important;padding:14px 0 24px!important}
+  .hero-art .ia-overview,.services-art .ia-overview{
+    height:auto!important;min-height:0!important;padding:17px!important;gap:13px!important;border-radius:18px!important
+  }
+  .hero-art .ia-overview-head,.services-art .ia-overview-head{align-items:flex-start!important;flex-direction:column!important;gap:9px!important}
+  .hero-art .ia-overview-head strong,.services-art .ia-overview-head strong{font-size:19px!important}
+  .hero-art .ia-overview-hub,.services-art .ia-overview-hub{gap:11px!important;padding:11px!important}
+  .hero-art .ia-overview-hub-icon,.services-art .ia-overview-hub-icon{width:45px!important;height:45px!important}
+  .hero-art .ia-overview-hub-icon img,.services-art .ia-overview-hub-icon img{width:29px!important;height:29px!important}
+  .hero-art .ia-overview-hub strong,.services-art .ia-overview-hub strong{font-size:15px!important}
+  .hero-art .ia-overview-hub small,.services-art .ia-overview-hub small{font-size:10px!important}
+  .hero-art .ia-service-grid,.services-art .ia-service-grid{gap:8px!important}
+  .hero-art .ia-service-tile,.services-art .ia-service-tile{min-height:100px!important;align-items:flex-start!important;flex-wrap:wrap!important;gap:8px!important;padding:11px!important}
+  .hero-art .ia-tile-icon,.services-art .ia-tile-icon{width:39px!important;height:39px!important}
+  .hero-art .ia-tile-copy,.services-art .ia-tile-copy{width:100%!important}
+  .hero-art .ia-tile-copy strong,.services-art .ia-tile-copy strong{font-size:12px!important}
+  .hero-art .ia-tile-copy small,.services-art .ia-tile-copy small{font-size:9px!important}
+  .hero-art .ia-overview-foot,.services-art .ia-overview-foot{align-items:flex-start!important;flex-direction:column!important;gap:5px!important;font-size:9px!important}
+}
+@media(prefers-reduced-motion:reduce){
+ .hero-art:before,.services-art:before,.hero-art:after,.services-art:after{animation:none!important}
+}
