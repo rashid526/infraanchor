@@ -6,7 +6,7 @@ if (toggle && nav) {
     toggle.setAttribute('aria-expanded', String(!open));
     nav.classList.toggle('is-open', !open);
   });
-  nav.addEventListener('click', event => {
+  document.addEventListener('keydown', event => {\n    if (event.key === 'Escape' && nav.classList.contains('is-open')) {\n      toggle.setAttribute('aria-expanded', 'false');\n      nav.classList.remove('is-open');\n      toggle.focus();\n    }\n  });\n  nav.addEventListener('click', event => {
     if (event.target.closest('a')) {
       toggle.setAttribute('aria-expanded', 'false');
       nav.classList.remove('is-open');
