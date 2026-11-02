@@ -1,15 +1,8 @@
 # InfraAnchor website
 
-A multi-page website for InfraAnchor built with Vite and React, with scroll-based motion and a Field Notes visual direction (warm paper, graphite, steel and signal orange).
+A responsive, multi-page static website for InfraAnchor, built with plain HTML, CSS and a small JavaScript file. The current visual direction is **Field Notes**: mineral paper, graphite, steel and restrained signal orange, with infrastructure diagrams, service ledgers and editorial-style technical guidance. The original IA logo geometry is retained and recoloured to match this palette.
 
-## Structure
-
-- `src/pages/` holds one component per page. `src/pages/index.js` maps each page key to its component.
-- `src/components/` holds shared pieces: header, footer, page layout, reveal-on-scroll motion, image frames, page heroes and the closing band.
-- `src/styles/` holds the design tokens (colours, type, spacing), base styles, shared components and page styles.
-- `src/lib/` holds site navigation, contact details and the Pexels image URLs.
-- `public/` holds files copied as-is into the build: favicon, logo mark, robots.txt, sitemap.xml and CNAME.
-- Each top-level `.html` file is a thin entry point for one page. `vite.config.js` lists them all so each builds to a static page.
+There is no database, server runtime, CMS or build step. The site is served as static files.
 
 ## Pages
 
@@ -20,23 +13,36 @@ A multi-page website for InfraAnchor built with Vite and React, with scroll-base
 - Project experience: `work.html`
 - Guides and insights: `insights.html`
 - Contact: `contact.html`
+- Custom not-found page: `404.html`
 - Email preferences instructions: `unsubscribe.html`
-- Not-found page: `404.html`
 
-## Commands
+## Shared assets
 
-- `npm install` installs dependencies.
-- `npm run build` produces the static site in `dist/`.
-- `npm run preview` serves the built site locally.
+- `assets/fieldwork.css` — current design system and responsive layouts
+- `assets/site.js` — mobile navigation, footer year and contact-form status
+- `assets/ia-mark.svg` — brand mark
+- `assets/favicon.svg` — browser icon
 
-## Contact form
+The HTML pages should reference `fieldwork.css?v=field-notes-1` and `site.js?v=field-notes-1`. Update the query string when deploying a breaking asset change if client-side caching prevents the new version from appearing.
 
-The contact page posts to FormSubmit and redirects to `https://infraanchor.com/contact.html?sent=1`. The redirect is hardcoded to the live domain, so it must be updated if the site is served from elsewhere. The recipient may need to complete FormSubmit's one-time activation. A successful redirect is not proof that the message reached the inbox, so test delivery from the live site.
+The older `assets/styles.css` and `assets/premium.css` files are legacy assets from the previous design and are not linked by the current pages.
+
+## Preview locally
+
+Open `index.html` in a browser or serve this directory with any static file server. Google Fonts are loaded as an enhancement; system-font fallbacks are defined in the stylesheet.
 
 ## Publishing
 
-The repository contains a `CNAME` file for `infraanchor.com`. Publish the contents of `dist/` after running the build. Hosting and DNS settings must be checked in the hosting account.
+The repository contains a `CNAME` file for `infraanchor.com`. The actual hosting provider, deployment status and DNS/HTTPS configuration must be checked in the hosting account; a repository commit alone does not prove that the live domain has updated.
 
-## Accessibility
+For GitHub Pages, publish from the repository root on the configured branch and follow GitHub's domain/DNS instructions. For another static host, configure the repository root as the publish directory and follow that provider's custom-domain instructions.
 
-Pages include a skip link, labelled navigation landmarks, a keyboard-accessible mobile menu, visible focus states, and reduced-motion support.
+## Contact form
+
+The contact page posts to FormSubmit and redirects to `https://infraanchor.com/contact.html?sent=1`. The recipient may need to complete FormSubmit's one-time activation/confirmation. A successful redirect is not independent proof that the message reached the inbox, so test delivery from the live site. Submissions are processed by FormSubmit; the contact page links to its privacy policy. Visitors are told not to include passwords or sensitive access details.
+
+The email-preferences page provides instructions to request removal by email; it is not an automated mailing-list unsubscribe integration.
+
+## Accessibility and maintenance
+
+The pages include a skip link, semantic navigation landmarks, mobile navigation controls, and reduced-motion handling. Keep page navigation and shared header/footer consistent when adding pages. Check keyboard focus, mobile layout, internal links and the live contact form after publishing.
