@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://infraanchor.com/sitemap.xml
