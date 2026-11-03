@@ -63,3 +63,175 @@ body{background:radial-gradient(ellipse 60% 35% at 80% -3%,#31549c22,transparent
 @media(max-width:1000px){.home-services .services{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:720px){.page-hero{padding:54px 0 57px;min-height:0}.home-hero{padding:54px 0 57px}.page-hero-grid{grid-template-columns:1fr;gap:38px}.page-hero h1{font-size:clamp(44px,12vw,66px)}.page-ambient{opacity:.38}.scene-panel{min-height:330px}.home-hero .scene-panel,.directory-hero .scene-panel{min-height:380px}.scene-top,.scene-bottom{left:15px;right:15px}.scene-art{inset:40px 6px 46px}.service-map{transform:scale(.9)}.rack-row{transform:scale(.82) rotateY(-13deg) rotateX(4deg)!important}.content-section{padding:67px 0}.content-grid{grid-template-columns:1fr;gap:28px}.content-intro{position:static}.feature-row{padding:18px 0}.process-section{padding:0 0 65px}.process-panel{padding:30px 23px}.process-grid{grid-template-columns:1fr;gap:21px}.process-step h3{margin:9px 0 6px}.service-directory{grid-template-columns:1fr}.directory-card{min-height:190px}.home-services .services{grid-template-columns:1fr}.home-services .service{min-height:200px}.service-proof .wrap{justify-content:flex-start;gap:11px 20px}.related-list{grid-template-columns:1fr}.metric-band{grid-template-columns:1fr}.contact-options{grid-template-columns:1fr}.inner-hero{padding:58px 0 45px}.inner-hero .scene-panel{display:block;min-height:350px}.inner-hero .page-hero-copy{max-width:100%}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}.js [data-reveal]{opacity:1;transform:none}}
+
+/* Readability pass: a consistent, responsive type scale across every page. */
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  font-size: 16px;
+  line-height: 1.65;
+}
+
+p:not(.label):not(.mono) {
+  font-size: clamp(16px, calc(1rem + .12vw), 18px);
+  line-height: 1.72;
+}
+
+.navlinks {
+  font-size: 14px;
+}
+
+.cta,
+.btn {
+  min-height: 48px;
+  font-size: 14px;
+  line-height: 1.35;
+}
+
+.menu {
+  font-size: 14px;
+}
+
+.label,
+.eyebrow {
+  font-size: clamp(11px, .72rem, 12px);
+  line-height: 1.55;
+}
+
+.hero-note,
+.page-hero-note,
+.note {
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.tag {
+  font-size: 12px;
+}
+
+.scene-panel .mono,
+.scene-top .mono,
+.scene-bottom .mono,
+.visual-label,
+.directory-card .mono {
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.scene-panel small,
+.visual-label small,
+.home-service-copy small,
+.map-hub small,
+.map-card small {
+  font-size: 10px;
+  line-height: 1.5;
+}
+
+.home-service-copy strong,
+.map-card strong,
+.process-path-step strong,
+.conversation-step strong {
+  font-size: 13px;
+}
+
+.map-hub {
+  font-size: 11px;
+}
+
+.content-intro h2,
+.section-heading h2 {
+  line-height: 1.08;
+}
+
+.feature-row h3,
+.process-step h3,
+.directory-card h3,
+.contact-option h3,
+.experience-row h3 {
+  font-size: 18px;
+  line-height: 1.35;
+}
+
+.feature-no,
+.process-step span,
+.experience-row .no,
+.experience-row small,
+.experience-domain-list span,
+.about-pillars strong,
+.anchor-caption span,
+.category-line b {
+  font-size: 12px;
+  line-height: 1.55;
+}
+
+.category-line,
+.filterbar button,
+.related-link,
+.service-detail,
+.work-detail,
+.faq-examples,
+.metric-card span,
+.home-services .service .service-detail {
+  font-size: 13px;
+  line-height: 1.65;
+}
+
+.footbrand p,
+.footgroup a {
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.footbottom p:not(.label):not(.mono) {
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+@media (max-width: 720px) {
+  p:not(.label):not(.mono) {
+    font-size: 16px;
+    line-height: 1.7;
+  }
+
+  .navlinks {
+    font-size: 15px;
+  }
+
+  .scene-panel .mono,
+  .scene-top .mono,
+  .scene-bottom .mono {
+    font-size: 10px;
+  }
+
+  .feature-row p,
+  .process-step p,
+  .directory-card p,
+  .contact-option p,
+  .experience-row p {
+    font-size: 16px;
+  }
+}
+
+
+/* Keep footer and compact proof rows readable without overpowering body copy. */
+.step h3 {
+  font-size: 17px;
+  line-height: 1.4;
+}
+
+.strip p,
+.striplist,
+.striplist span,
+.proof span {
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.footbrand p:not(.label):not(.mono) {
+  font-size: 14px;
+  line-height: 1.6;
+}
+
