@@ -124,3 +124,121 @@ body{background:var(--bg)}
 @media(prefers-reduced-motion:reduce){.hero-ambient .orbit,.hero-ambient .signal-line,.hero-ambient .signal-node{animation:none!important}.hero-ambient .orbit-beacon-halo,.hero-ambient .orbit-beacon-core{display:none}.hero-ambient:after{animation:none;opacity:.14}.hero-ambient .ambient-glow{animation:low-motion-glow 12s ease-in-out infinite alternate!important}.hero-ambient:before{left:32%;animation:low-motion-glow 12s ease-in-out infinite alternate!important}.service-detail,.work-detail,.faq-examples{font-size:9px}}
 @keyframes low-motion-glow{from{opacity:.35}to{opacity:.62}}
 
+
+/* InfraAnchor logo: a light signal follows the curve and softly lights the IA. */
+.brand svg .logo-curve-light {
+  opacity: .92;
+  stroke-dasharray: 15 85;
+  stroke-dashoffset: 100;
+  filter: drop-shadow(0 0 3px #b8dcff);
+  animation: logo-curve-travel 2.8s linear infinite;
+}
+
+.brand svg circle.logo-end-dot {
+  transform-box: fill-box;
+  transform-origin: center;
+  filter: drop-shadow(0 0 2px #a4d8ff88);
+  animation: logo-end-pulse 2.8s ease-in-out infinite;
+}
+
+.brand svg circle.logo-traveler {
+  filter: drop-shadow(0 0 3px #d8f1ff);
+  animation: none;
+}
+
+.brand svg text {
+  animation: logo-ia-glow 3.6s ease-in-out infinite;
+}
+
+.brand svg text:nth-of-type(2) {
+  animation-delay: .16s;
+}
+
+@keyframes logo-curve-travel {
+  from { stroke-dashoffset: 100; }
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes logo-end-pulse {
+  0%, 76%, 100% { opacity: .76; transform: scale(.94); }
+  88% { opacity: 1; transform: scale(1.08); }
+}
+
+@keyframes logo-ia-glow {
+  0%, 100% { filter: drop-shadow(0 0 0 #91caff00); }
+  50% { filter: drop-shadow(0 0 3px #91caff80); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .brand svg .logo-curve-light,
+  .brand svg circle.logo-end-dot,
+  .brand svg text {
+    animation: none !important;
+  }
+
+  .brand svg .logo-curve-light {
+    opacity: 0;
+  }
+
+  .brand svg circle.logo-traveler {
+    display: none;
+  }
+}
+
+
+/* Soft menu glow on pointer hover and keyboard focus. */
+.navlinks a {
+  position: relative;
+  transition: color .2s ease, text-shadow .2s ease;
+}
+
+.navlinks a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -9px;
+  height: 2px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, #70a8ff, #a192ff);
+  box-shadow: 0 0 10px #75aaffb8;
+  opacity: 0;
+  transform: scaleX(.55);
+  transform-origin: center;
+  transition: opacity .2s ease, transform .2s ease;
+}
+
+.navlinks a[aria-current="page"]::after {
+  opacity: 1;
+  transform: scaleX(1);
+}
+
+.navlinks a:focus-visible {
+  color: #f2f7ff;
+  text-shadow: 0 0 8px #8bbaff90, 0 0 16px #5b8cff4d;
+}
+
+.navlinks a:focus-visible::after {
+  opacity: 1;
+  transform: scaleX(1);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .navlinks a:hover {
+    color: #f2f7ff;
+    text-shadow: 0 0 8px #8bbaff90, 0 0 16px #5b8cff4d;
+  }
+
+  .navlinks a:hover::after {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .navlinks a,
+  .navlinks a::after {
+    transition: none;
+  }
+}
+
