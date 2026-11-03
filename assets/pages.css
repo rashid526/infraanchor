@@ -349,50 +349,43 @@ body[data-page="approach"] .timeline-item:nth-child(4)::before {
 }
 
 
-/* Let each scene card light up as the vertical signal reaches its step. */
+/* Reuse Services' left-to-right sheen, synchronized to the moving connector. */
+.process-path-line:after,
+.conversation-line:after,
+.capability-stack::after {
+  animation-duration: 5s;
+}
+
 .process-path-step,
 .conversation-step,
 .capability-layer {
-  animation: step-box-pass 4.8s ease-in-out infinite;
+  overflow: hidden;
 }
 
-.process-path-step:nth-of-type(2),
-.conversation-step:nth-of-type(2),
-.capability-layer:nth-child(2) {
-  animation-delay: 1.4s;
+.process-path-step::after,
+.conversation-step::after,
+.capability-layer::after {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 -65%;
+  width: 45%;
+  background: linear-gradient(90deg, transparent, #82baff1e, transparent);
+  pointer-events: none;
+  animation: home-signal-sweep 5s ease-in-out infinite;
 }
 
-.process-path-step:nth-of-type(3),
-.conversation-step:nth-of-type(3),
-.capability-layer:nth-child(3) {
-  animation-delay: 2.8s;
-}
+/* The shimmer starts when the vertical light reaches each row. */
+.process-path-step::after,
+.conversation-step::after { animation-delay: -.28s; }
+.process-path-step:nth-of-type(2)::after,
+.conversation-step:nth-of-type(2)::after { animation-delay: .95s; }
+.process-path-step:nth-of-type(3)::after,
+.conversation-step:nth-of-type(3)::after { animation-delay: 2.2s; }
+.process-path-step:nth-of-type(4)::after { animation-delay: 3.45s; }
 
-.process-path-step:nth-of-type(4) {
-  animation-delay: 3.9s;
-}
-
-.process-path-step > i,
-.conversation-step > i,
-.capability-layer > i {
-  animation: step-dot-pass 4.8s ease-in-out infinite;
-}
-
-.process-path-step:nth-of-type(2) > i,
-.conversation-step:nth-of-type(2) > i,
-.capability-layer:nth-child(2) > i {
-  animation-delay: 1.4s;
-}
-
-.process-path-step:nth-of-type(3) > i,
-.conversation-step:nth-of-type(3) > i,
-.capability-layer:nth-child(3) > i {
-  animation-delay: 2.8s;
-}
-
-.process-path-step:nth-of-type(4) > i {
-  animation-delay: 3.9s;
-}
+.capability-layer::after { animation-delay: .1s; }
+.capability-layer:nth-child(2)::after { animation-delay: 1.3s; }
+.capability-layer:nth-child(3)::after { animation-delay: 2.55s; }
 
 .capability-stack {
   position: relative;
@@ -428,43 +421,14 @@ body[data-page="approach"] .timeline-item:nth-child(4)::before {
   z-index: 2;
 }
 
-@keyframes step-box-pass {
-  0%, 100% {
-    border-color: #8eafff3c;
-    box-shadow: 0 9px 22px #0002;
-    filter: brightness(1);
-  }
-  14%, 30% {
-    border-color: #a9d6ffbd;
-    box-shadow: 0 0 24px #589fff45, inset 0 0 12px #82baff17;
-    filter: brightness(1.14);
-  }
-}
-
-@keyframes step-dot-pass {
-  0%, 100% {
-    transform: scale(.9);
-    filter: brightness(.88);
-    box-shadow: 0 0 7px #79d8bb75;
-  }
-  14%, 30% {
-    transform: scale(1.25);
-    filter: brightness(1.45);
-    box-shadow: 0 0 14px 4px #9de9ff;
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
-  .process-path-step,
-  .conversation-step,
-  .capability-layer,
-  .process-path-step > i,
-  .conversation-step > i,
-  .capability-layer > i,
+  .process-path-step::after,
+  .conversation-step::after,
+  .capability-layer::after,
+  .process-path-line::after,
+  .conversation-line::after,
   .capability-stack::after {
     animation: none !important;
-    filter: none;
-    transform: none;
   }
 }
 
