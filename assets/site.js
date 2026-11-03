@@ -1,39 +1,56 @@
-const toggle = document.querySelector('.menu-toggle');
-const nav = document.querySelector('.site-nav');
-if (toggle && nav) {
-  toggle.addEventListener('click', () => {
-    const open = toggle.getAttribute('aria-expanded') === 'true';
-    toggle.setAttribute('aria-expanded', String(!open));
-    nav.classList.toggle('is-open', !open);
-  });
-  nav.addEventListener('click', event => {
-    if (event.target.closest('a')) {
-      toggle.setAttribute('aria-expanded', 'false');
-      nav.classList.remove('is-open');
-    }
-  });
-}
-document.querySelectorAll('[data-year]').forEach(node => node.textContent = new Date().getFullYear());
-
-const contactForm = document.querySelector('[data-contact-form]');
-if (contactForm) {
-  const submitButton = contactForm.querySelector('[type="submit"]');
-  const status = contactForm.querySelector('[data-form-status]');
-  const note = contactForm.querySelector('[data-form-note]');
-  const setStatus = (message, kind = '') => {
-    if (!status) return;
-    status.textContent = message;
-    status.className = `form-status${kind ? ` is-${kind}` : ''}`;
-    status.hidden = !message;
-  };
-
-  if (note) note.innerHTML = 'Your message is processed by <a href="https://formsubmit.co/privacy.pdf" target="_blank" rel="noopener">FormSubmit</a> and emailed to rashid@infraanchor.com. Please do not include passwords or sensitive access details.';
-  if (new URLSearchParams(window.location.search).get('sent') === '1') {
-    setStatus('Thanks for getting in touch. Your message has been sent to InfraAnchor.', 'success');
+(() => {
+  const menu = document.querySelector('.menu');
+  const nav = document.querySelector('#site-nav');
+  if (menu && nav) {
+    menu.addEventListener('click', () => {
+      const open = nav.classList.toggle('open');
+      menu.setAttribute('aria-expanded', String(open));
+    });
+    nav.addEventListener('click', event => {
+      if (event.target.closest('a')) {
+        nav.classList.remove('open');
+        menu.setAttribute('aria-expanded', 'false');
+      }
+    });
   }
-  contactForm.addEventListener('submit', () => {
-    submitButton.disabled = true;
-    submitButton.textContent = 'Sending…';
-    setStatus('Sending your message…');
+
+  const currentFile = location.pathname.split('/').pop() || 'index.html';
+  document.querySelectorAll('#site-nav a').forEach(link => {
+    if (link.getAttribute('href') === currentFile) link.setAttribute('aria-current', 'page');
   });
-}
+
+  const revealItems = [...document.querySelectorAll('[data-reveal]')];
+  document.documentElement.classList.add('js');
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver(entries => entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in-view');
+        observer.unobserve(entry.target);
+      }
+    }), { threshold: .12, rootMargin: '0px 0px -25px 0px' });
+    revealItems.forEach((item, index) => {
+      item.style.setProperty('--reveal-delay', `${(index % 4) * 75}ms`);
+      observer.observe(item);
+    });
+  } else revealItems.forEach(item => item.classList.add('in-view'));
+
+  const filterButtons = [...document.querySelectorAll('[data-filter]')];
+  const serviceCards = [...document.querySelectorAll('[data-category]')];
+  filterButtons.forEach(button => button.addEventListener('click', () => {
+    filterButtons.forEach(item => item.setAttribute('aria-pressed', String(item === button)));
+    const selected = button.dataset.filter;
+    serviceCards.forEach(card => {
+      card.hidden = selected !== 'all' && card.dataset.category !== selected;
+    });
+  }));
+
+  const progress = document.querySelector('.scroll-progress span');
+  if (progress) {
+    const update = () => {
+      const max = document.documentElement.scrollHeight - innerHeight;
+      progress.style.transform = `scaleX(${max > 0 ? scrollY / max : 0})`;
+    };
+    addEventListener('scroll', update, { passive: true });
+    update();
+  }
+})();
