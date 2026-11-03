@@ -275,11 +275,13 @@ p:not(.label):not(.mono) {
 
 
 /* Approach timeline: one light travels down the connector, with each step responding. */
-body[data-page="approach"] .timeline {
+body[data-page="approach"] .timeline,
+body[data-page="about"] .timeline {
   position: relative;
 }
 
-body[data-page="approach"] .timeline::after {
+body[data-page="approach"] .timeline::after,
+body[data-page="about"] .timeline::after {
   content: "";
   position: absolute;
   z-index: 0;
@@ -294,24 +296,29 @@ body[data-page="approach"] .timeline::after {
   animation: timeline-signal-down 5.2s linear infinite;
 }
 
-body[data-page="approach"] .timeline-item {
+body[data-page="approach"] .timeline-item,
+body[data-page="about"] .timeline-item {
   z-index: 1;
 }
 
-body[data-page="approach"] .timeline-item::before {
+body[data-page="approach"] .timeline-item::before,
+body[data-page="about"] .timeline-item::before {
   z-index: 2;
   animation: timeline-dot-light 5.2s ease-in-out infinite;
 }
 
-body[data-page="approach"] .timeline-item:nth-child(2)::before {
+body[data-page="approach"] .timeline-item:nth-child(2)::before,
+body[data-page="about"] .timeline-item:nth-child(2)::before {
   animation-delay: 1.55s;
 }
 
-body[data-page="approach"] .timeline-item:nth-child(3)::before {
+body[data-page="approach"] .timeline-item:nth-child(3)::before,
+body[data-page="about"] .timeline-item:nth-child(3)::before {
   animation-delay: 2.85s;
 }
 
-body[data-page="approach"] .timeline-item:nth-child(4)::before {
+body[data-page="approach"] .timeline-item:nth-child(4)::before,
+body[data-page="about"] .timeline-item:nth-child(4)::before {
   animation-delay: 4.1s;
 }
 
@@ -336,12 +343,14 @@ body[data-page="approach"] .timeline-item:nth-child(4)::before {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  body[data-page="approach"] .timeline::after {
+  body[data-page="approach"] .timeline::after,
+  body[data-page="about"] .timeline::after {
     display: none;
     animation: none;
   }
 
-  body[data-page="approach"] .timeline-item::before {
+  body[data-page="approach"] .timeline-item::before,
+  body[data-page="about"] .timeline-item::before {
     animation: none;
     filter: none;
     transform: none;
@@ -395,7 +404,7 @@ body[data-page="approach"] .timeline-item:nth-child(4)::before {
   content: "";
   position: absolute;
   z-index: 0;
-  right: 16px;
+  left: 30px;
   top: 31px;
   bottom: 31px;
   width: 1px;
@@ -406,7 +415,7 @@ body[data-page="approach"] .timeline-item:nth-child(4)::before {
   content: "";
   position: absolute;
   z-index: 1;
-  right: 15px;
+  left: 28.5px;
   top: -28%;
   width: 3px;
   height: 28%;
