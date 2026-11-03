@@ -273,3 +273,78 @@ p:not(.label):not(.mono) {
   }
 }
 
+
+/* Approach timeline: one light travels down the connector, with each step responding. */
+body[data-page="approach"] .timeline {
+  position: relative;
+}
+
+body[data-page="approach"] .timeline::after {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  left: -2px;
+  top: -10px;
+  width: 3px;
+  height: 22px;
+  border-radius: 99px;
+  background: linear-gradient(180deg, transparent, #c8efff 35%, #76baff 68%, transparent);
+  box-shadow: 0 0 12px 2px #65b8ff9c;
+  pointer-events: none;
+  animation: timeline-signal-down 5.2s linear infinite;
+}
+
+body[data-page="approach"] .timeline-item {
+  z-index: 1;
+}
+
+body[data-page="approach"] .timeline-item::before {
+  z-index: 2;
+  animation: timeline-dot-light 5.2s ease-in-out infinite;
+}
+
+body[data-page="approach"] .timeline-item:nth-child(2)::before {
+  animation-delay: 1.55s;
+}
+
+body[data-page="approach"] .timeline-item:nth-child(3)::before {
+  animation-delay: 2.85s;
+}
+
+body[data-page="approach"] .timeline-item:nth-child(4)::before {
+  animation-delay: 4.1s;
+}
+
+@keyframes timeline-signal-down {
+  0% { top: -10px; opacity: 0; }
+  6% { opacity: 1; }
+  92% { opacity: 1; }
+  100% { top: 100%; opacity: 0; }
+}
+
+@keyframes timeline-dot-light {
+  0%, 8% {
+    transform: scale(1.3);
+    filter: brightness(1.4);
+    box-shadow: 0 0 15px 4px #77caffb8;
+  }
+  18%, 100% {
+    transform: scale(1);
+    filter: brightness(1);
+    box-shadow: 0 0 8px #82b2ff;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body[data-page="approach"] .timeline::after {
+    display: none;
+    animation: none;
+  }
+
+  body[data-page="approach"] .timeline-item::before {
+    animation: none;
+    filter: none;
+    transform: none;
+  }
+}
+
