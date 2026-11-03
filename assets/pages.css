@@ -348,3 +348,123 @@ body[data-page="approach"] .timeline-item:nth-child(4)::before {
   }
 }
 
+
+/* Let each scene card light up as the vertical signal reaches its step. */
+.process-path-step,
+.conversation-step,
+.capability-layer {
+  animation: step-box-pass 4.8s ease-in-out infinite;
+}
+
+.process-path-step:nth-of-type(2),
+.conversation-step:nth-of-type(2),
+.capability-layer:nth-child(2) {
+  animation-delay: 1.4s;
+}
+
+.process-path-step:nth-of-type(3),
+.conversation-step:nth-of-type(3),
+.capability-layer:nth-child(3) {
+  animation-delay: 2.8s;
+}
+
+.process-path-step:nth-of-type(4) {
+  animation-delay: 3.9s;
+}
+
+.process-path-step > i,
+.conversation-step > i,
+.capability-layer > i {
+  animation: step-dot-pass 4.8s ease-in-out infinite;
+}
+
+.process-path-step:nth-of-type(2) > i,
+.conversation-step:nth-of-type(2) > i,
+.capability-layer:nth-child(2) > i {
+  animation-delay: 1.4s;
+}
+
+.process-path-step:nth-of-type(3) > i,
+.conversation-step:nth-of-type(3) > i,
+.capability-layer:nth-child(3) > i {
+  animation-delay: 2.8s;
+}
+
+.process-path-step:nth-of-type(4) > i {
+  animation-delay: 3.9s;
+}
+
+.capability-stack {
+  position: relative;
+}
+
+.capability-stack::before {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  right: 16px;
+  top: 31px;
+  bottom: 31px;
+  width: 1px;
+  background: linear-gradient(180deg, #83b4ff88, #83b4ff18);
+}
+
+.capability-stack::after {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  right: 15px;
+  top: -28%;
+  width: 3px;
+  height: 28%;
+  background: #a9e8ff;
+  box-shadow: 0 0 11px #73caff;
+  pointer-events: none;
+  animation: path-signal 4.8s linear infinite;
+}
+
+.capability-layer {
+  position: relative;
+  z-index: 2;
+}
+
+@keyframes step-box-pass {
+  0%, 100% {
+    border-color: #8eafff3c;
+    box-shadow: 0 9px 22px #0002;
+    filter: brightness(1);
+  }
+  14%, 30% {
+    border-color: #a9d6ffbd;
+    box-shadow: 0 0 24px #589fff45, inset 0 0 12px #82baff17;
+    filter: brightness(1.14);
+  }
+}
+
+@keyframes step-dot-pass {
+  0%, 100% {
+    transform: scale(.9);
+    filter: brightness(.88);
+    box-shadow: 0 0 7px #79d8bb75;
+  }
+  14%, 30% {
+    transform: scale(1.25);
+    filter: brightness(1.45);
+    box-shadow: 0 0 14px 4px #9de9ff;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .process-path-step,
+  .conversation-step,
+  .capability-layer,
+  .process-path-step > i,
+  .conversation-step > i,
+  .capability-layer > i,
+  .capability-stack::after {
+    animation: none !important;
+    filter: none;
+    transform: none;
+  }
+}
+
