@@ -1,4 +1,16 @@
 (() => {
+  const ambientStyles = document.createElement('link');
+  ambientStyles.rel = 'stylesheet';
+  ambientStyles.href = 'assets/ambient.css?v=infra-network-4';
+  document.head.append(ambientStyles);
+
+  const ambientNetwork = document.createElement('img');
+  ambientNetwork.className = 'infra-ambient-network';
+  ambientNetwork.src = 'assets/infrastructure-ambient.svg?v=infra-network-4';
+  ambientNetwork.alt = '';
+  ambientNetwork.setAttribute('aria-hidden', 'true');
+  document.body.prepend(ambientNetwork);
+
   const menu = document.querySelector('.menu');
   const nav = document.querySelector('#site-nav');
   if (menu && nav) {
