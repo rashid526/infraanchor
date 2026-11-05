@@ -242,3 +242,51 @@ body{background:var(--bg)}
   }
 }
 
+/* Logo polish preview: restrained scale and one readable signal moving along the arc. */
+.brand { gap: 12px; }
+.brand svg,
+.brand img { width: 42px; height: 42px; }
+.wordmark { font-size: 20px; }
+.brand:hover svg { transform: translateY(-1px) scale(1.025); }
+.brand svg path:not(.logo-curve-light) {
+  animation: none;
+  filter: drop-shadow(0 0 3px #62a3ff48);
+}
+.brand svg .logo-curve-light {
+  opacity: 0;
+  stroke-dasharray: 8 100;
+  stroke-dashoffset: 0;
+  stroke-width: 2.2;
+  filter: drop-shadow(0 0 2px #d8f1ff) drop-shadow(0 0 5px #80c5ff);
+  animation: logo-curve-signal 3.2s cubic-bezier(.36,0,.2,1) infinite;
+}
+.brand svg circle.logo-end-dot {
+  opacity: .55;
+  filter: drop-shadow(0 0 2px #a4d8ff66);
+  animation: logo-end-arrival 3.2s ease-in-out infinite;
+}
+.brand svg text { animation: logo-ia-arrival 3.2s ease-in-out infinite; }
+
+@keyframes logo-curve-signal {
+  0%, 8% { stroke-dashoffset: 0; opacity: 0; }
+  16% { stroke-dashoffset: 0; opacity: 1; }
+  76% { stroke-dashoffset: -100; opacity: 1; }
+  90%, 100% { stroke-dashoffset: -100; opacity: 0; }
+}
+@keyframes logo-end-arrival {
+  0%, 72%, 100% { opacity: .55; transform: scale(.88); }
+  82%, 90% { opacity: 1; transform: scale(1.12); }
+}
+@keyframes logo-ia-arrival {
+  0%, 72%, 100% { filter: drop-shadow(0 0 0 #91caff00); }
+  82%, 90% { filter: drop-shadow(0 0 3px #91caff78); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .brand svg path:not(.logo-curve-light),
+  .brand svg .logo-curve-light,
+  .brand svg circle.logo-end-dot,
+  .brand svg text { animation: none !important; }
+  .brand svg .logo-curve-light { opacity: 0; }
+}
+
