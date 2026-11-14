@@ -1031,3 +1031,27 @@ body[data-page="home"] .home-services .service:nth-child(5) {
     grid-column: 1;
   }
 }
+
+/* Center the services page's final row, including when category filters are used. */
+body[data-page="services"] .service-directory {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 14px;
+}
+
+body[data-page="services"] .service-directory .directory-card {
+  flex: 0 1 calc((100% - 28px) / 3);
+}
+
+@media (max-width: 1000px) {
+  body[data-page="services"] .service-directory .directory-card {
+    flex-basis: calc((100% - 14px) / 2);
+  }
+}
+
+@media (max-width: 720px) {
+  body[data-page="services"] .service-directory .directory-card {
+    flex-basis: 100%;
+  }
+}
