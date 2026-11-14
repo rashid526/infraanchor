@@ -596,3 +596,87 @@ body[data-page="about"] .timeline-item:nth-child(4) h3 {
   .contact-form-field-half { grid-column: 1 / -1; }
   .contact-form-submit { justify-self: stretch; }
 }
+/* Local design preview: a quieter editorial hero used consistently across pages. */
+body[data-page] .page-hero {
+  min-height: 0;
+  padding: 54px 0 58px;
+  background: linear-gradient(180deg, #0c111c 0%, #080b14 100%);
+}
+body[data-page] .page-hero::after {
+  opacity: .16;
+}
+body[data-page] .page-hero .page-ambient {
+  display: block;
+  opacity: .48;
+}
+body[data-page] .page-hero .scene-panel {
+  display: block;
+  min-height: 420px;
+}
+body[data-page] .page-hero .page-hero-grid {
+  display: grid;
+  grid-template-columns: .92fr 1.08fr;
+  align-items: center;
+  gap: 50px;
+  width: auto;
+  max-width: min(1180px, calc(100% - 64px));
+  margin-inline: auto;
+}
+body[data-page] .page-hero .page-hero-copy {
+  max-width: 620px;
+}
+body[data-page] .page-hero .eyebrow.mono {
+  margin-bottom: 17px;
+  color: #a1adbf;
+  font: 12px/1.5 var(--sans);
+  letter-spacing: .025em;
+  text-transform: none;
+}
+body[data-page] .page-hero h1 {
+  max-width: 720px;
+  margin-bottom: 19px;
+  font-size: clamp(42px, 4.6vw, 62px);
+  line-height: 1.05;
+  letter-spacing: -.047em;
+}
+body[data-page] .page-hero .intro {
+  max-width: 590px;
+  color: #b7c0cf;
+  font-size: 16px;
+  line-height: 1.7;
+}
+body[data-page] .page-hero .actions {
+  margin-top: 22px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+body[data-page] .page-hero-note {
+  margin-top: 22px;
+  color: #a1adbf;
+  font: 12px/1.5 var(--sans);
+  letter-spacing: 0;
+  text-transform: none;
+}
+body[data-page] .page-hero-note i {
+  background: var(--electric);
+  box-shadow: none;
+}
+@media (max-width: 720px) {
+  body[data-page] .page-hero {
+    padding: 43px 0 50px;
+  }
+  body[data-page] .page-hero .page-hero-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+    max-width: calc(100% - 38px);
+  }
+  body[data-page] .page-hero .scene-panel {
+    min-height: 380px;
+  }
+  body[data-page] .page-hero h1 {
+    font-size: clamp(40px, 10vw, 50px);
+  }
+  body[data-page] .page-hero .intro {
+    font-size: 15px;
+  }
+}
