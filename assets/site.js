@@ -56,6 +56,55 @@
     });
   }));
 
+  const contactForm = document.querySelector('[data-contact-form]');
+  const contactEndpoint = String(window.INFRAANCHOR_CONTACT_ENDPOINT || '').trim();
+  if (contactForm && contactEndpoint) {
+    const submitButton = contactForm.querySelector('[type="submit"]');
+    const status = contactForm.querySelector('[data-form-status]');
+    const setStatus = (message, kind = '') => {
+      if (!status) return;
+      status.textContent = message;
+      status.className = `contact-form-status${kind ? ` is-${kind}` : ''}`;
+      status.hidden = !message;
+    };
+
+    contactForm.addEventListener('submit', async event => {
+      event.preventDefault();
+      const values = Object.fromEntries(new FormData(contactForm).entries());
+      values._replyto = values.email;
+      if (submitButton) {
+        submitButton.disabled = true;
+        submitButton.textContent = 'Sending…';
+      }
+      setStatus('Sending your message…');
+
+      try {
+        const response = await fetch(contactEndpoint, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+          body: JSON.stringify(values)
+        });
+        const result = await response.json();
+        const activationRequired = /confirm|activat/i.test(String(result?.message || ''));
+        if (activationRequired) {
+          setStatus('One-time verification is needed before the form can deliver messages. Check rashid@infraanchor.com for FormSubmit’s activation email and confirm it.', 'error');
+          return;
+        }
+        const rejected = result?.success === false || String(result?.success).toLowerCase() === 'false';
+        if (!response.ok || rejected) throw new Error('Form submission failed');
+
+        contactForm.reset();
+        setStatus('Your message was submitted successfully. Thank you.', 'success');
+      } catch (error) {
+        setStatus('We could not submit your message just now. Please email rashid@infraanchor.com instead.', 'error');
+      } finally {
+        if (submitButton) {
+          submitButton.disabled = false;
+          submitButton.innerHTML = 'Send message <span class="arrow">↗</span>';
+        }
+      }
+    });
+  }
   const progress = document.querySelector('.scroll-progress span');
   if (progress) {
     const update = () => {

@@ -1,1 +1,1 @@
-// Retained for reference only. The current contact form uses FormSubmit via assets/site.js.
+window.INFRAANCHOR_CONTACT_ENDPOINT = "https://formsubmit.co/ajax/rashid@infraanchor.com";

@@ -20,7 +20,8 @@ Responsive static website built with HTML, CSS and JavaScript. `index.html` is t
 
 - `assets/site.css` — Shared styles and homepage layout
 - `assets/pages.css` — Page layouts and service illustrations
-- `assets/site.js` — Navigation, scroll effects and service filters
+- `assets/site.js` — Navigation, scroll effects, service filters and contact form submission
+- `assets/contact-config.js` — Contact form endpoint configuration
 
 ## Publishing
 
@@ -28,4 +29,4 @@ Publish the repository root as a static site. The `CNAME` file points to `infraa
 
 ## Contact
 
-The contact page links to `rashid@infraanchor.com` and opens the visitor's email app.
+The contact page submits enquiries through FormSubmit to the existing public contact address and keeps a direct email fallback. If FormSubmit requests activation, confirm its one-time email before expecting submissions to be forwarded. The page identifies FormSubmit as the processor and links to its privacy terms.
