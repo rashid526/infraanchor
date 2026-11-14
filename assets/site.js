@@ -57,6 +57,13 @@
   }));
 
   const contactForm = document.querySelector('[data-contact-form]');
+  if (contactForm) {
+    const audience = contactForm.querySelector('[name="audience"]');
+    const requestedAudience = new URLSearchParams(window.location.search).get('audience');
+    if (audience && ['business', 'msp'].includes(requestedAudience)) {
+      audience.value = requestedAudience;
+    }
+  }
   const contactEndpoint = String(window.INFRAANCHOR_CONTACT_ENDPOINT || '').trim();
   if (contactForm && contactEndpoint) {
     const submitButton = contactForm.querySelector('[type="submit"]');

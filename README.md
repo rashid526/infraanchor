@@ -6,6 +6,7 @@ Responsive static website built with HTML, CSS and JavaScript. `index.html` is t
 
 - `index.html` — Home
 - `services.html` — Service directory
+- `msp-support.html` — Remote support for MSP partners in the US and UK
 - `cloud-workplace.html` — Cloud and workplace support
 - `infrastructure.html` — Infrastructure and networks
 - `cybersecurity.html` — Cybersecurity and access

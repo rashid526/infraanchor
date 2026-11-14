@@ -549,6 +549,7 @@ body[data-page="about"] .timeline-item:nth-child(4) h3 {
   font-weight: 600;
 }
 .contact-form-field input,
+.contact-form-field select,
 .contact-form-field textarea {
   width: 100%;
   min-height: 45px;
@@ -563,6 +564,7 @@ body[data-page="about"] .timeline-item:nth-child(4) h3 {
 .contact-form-field input::placeholder,
 .contact-form-field textarea::placeholder { color: var(--soft); opacity: 1; }
 .contact-form-field input:focus-visible,
+.contact-form-field select:focus-visible,
 .contact-form-field textarea:focus-visible {
   outline: 2px solid var(--teal);
   outline-offset: 2px;
@@ -851,6 +853,7 @@ body[data-page="contact"] .contact-form-field label {
 }
 
 body[data-page="contact"] .contact-form-field input,
+body[data-page="contact"] .contact-form-field select,
 body[data-page="contact"] .contact-form-field textarea {
   font-size: 15px;
   line-height: 1.5;
@@ -1053,5 +1056,177 @@ body[data-page="services"] .service-directory .directory-card {
 @media (max-width: 720px) {
   body[data-page="services"] .service-directory .directory-card {
     flex-basis: 100%;
+  }
+}
+
+/* MSP partner page and the homepage audience path. */
+.msp-audience-link {
+  display: inline-flex;
+  align-items: center;
+  color: #8bb6ff;
+  font: 10px/1.5 var(--mono);
+  letter-spacing: .03em;
+}
+.msp-audience-link:hover,
+.msp-audience-link:focus-visible {
+  color: #e1ecff;
+}
+.msp-scene {
+  min-height: 420px;
+}
+.msp-flow {
+  position: absolute;
+  inset: 70px 25px 58px;
+  display: grid;
+  align-content: center;
+  gap: 13px;
+}
+.msp-flow-step {
+  display: grid;
+  grid-template-columns: 37px minmax(0, 1fr);
+  gap: 12px;
+  align-items: center;
+  min-height: 68px;
+  padding: 11px 14px;
+  border: 1px solid #8eafff49;
+  border-radius: 7px;
+  background: linear-gradient(110deg, #1b2a46f2, #10182bf2);
+}
+.msp-flow-step > span {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border: 1px solid #79aaff69;
+  border-radius: 50%;
+  color: #9dc0ff;
+  font: 10px var(--mono);
+}
+.msp-flow-step > div {
+  display: grid;
+  gap: 4px;
+}
+.msp-flow-step strong {
+  color: #e1eaff;
+  font-size: 13px;
+  line-height: 1.4;
+}
+.msp-flow-step small {
+  color: #9aadd0;
+  font: 10px/1.45 var(--mono);
+}
+.msp-section {
+  padding: 82px 0 86px;
+  border-block: 1px solid #cddaf11a;
+  background: linear-gradient(180deg, #0c111c 0%, #0a0e17 100%);
+}
+.msp-section .section-heading {
+  max-width: 740px;
+  margin-bottom: 34px;
+}
+.msp-section .section-heading h2 {
+  max-width: 660px;
+  font-size: clamp(36px, 3.8vw, 49px);
+}
+.msp-section .section-heading p:not(.label) {
+  max-width: 680px;
+  font-size: 17px;
+  line-height: 1.72;
+}
+.msp-offer-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+.msp-offer-card {
+  display: flex;
+  flex-direction: column;
+  min-height: 240px;
+  padding: 25px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: linear-gradient(145deg, #141d30, #0e1422);
+}
+.msp-offer-card > .mono {
+  color: #83aaff;
+  font-size: 10px;
+  line-height: 1.55;
+}
+.msp-offer-card h3 {
+  margin: 22px 0 10px;
+  font-size: 20px;
+  line-height: 1.3;
+  letter-spacing: -.035em;
+}
+.msp-offer-card p {
+  margin: 0;
+  color: #b9c7dd;
+  font-size: 16.5px;
+  line-height: 1.68;
+}
+.msp-process {
+  padding: 28px 0 76px;
+}
+.msp-process .process-panel {
+  padding: 48px 54px;
+}
+.msp-process .process-step p {
+  font-size: 16.5px;
+  line-height: 1.68;
+}
+.msp-contact .contactbox {
+  border-radius: 12px;
+  padding: 48px 54px;
+}
+.msp-direct-link {
+  margin: 18px 0 0;
+  color: #98a9c4;
+  font-size: 14px;
+  text-align: center;
+}
+.msp-direct-link a {
+  color: #9bbdff;
+}
+.msp-direct-link a:hover {
+  color: #fff;
+}
+
+@media (max-width: 1000px) {
+  .msp-offer-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 720px) {
+  .msp-section {
+    padding: 66px 0;
+  }
+  .msp-offer-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .msp-offer-card {
+    min-height: 0;
+    padding: 22px;
+  }
+  .msp-flow {
+    inset: 62px 15px 49px;
+    gap: 9px;
+  }
+  .msp-flow-step {
+    min-height: 58px;
+    padding: 8px 10px;
+    gap: 9px;
+  }
+  .msp-flow-step strong {
+    font-size: 12px;
+  }
+  .msp-flow-step small {
+    font-size: 9px;
+  }
+  .msp-process .process-panel {
+    padding: 30px 23px;
+  }
+  .msp-contact .contactbox {
+    padding: 32px 24px;
   }
 }
