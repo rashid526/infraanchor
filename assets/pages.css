@@ -680,3 +680,264 @@ body[data-page] .page-hero-note i {
     font-size: 15px;
   }
 }
+
+/* Local preview polish: clearer service cards and calmer section rhythm. */
+body[data-page] section {
+  scroll-margin-top: 112px;
+}
+body[data-page] .infra-ambient-network {
+  opacity: .42;
+}
+body[data-page="home"] .stripinner .mono {
+  white-space: nowrap;
+  font-size: 11px;
+  letter-spacing: .1em;
+}
+body[data-page="home"] .home-services {
+  background: linear-gradient(180deg, rgba(8, 11, 20, .9), rgba(8, 11, 20, .84));
+}
+body[data-page="home"] .home-services .service {
+  min-height: 262px;
+  padding: 24px;
+  border-radius: 10px;
+}
+body[data-page="home"] .home-services .service::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  opacity: 0;
+  background: radial-gradient(circle at 85% 0%, #4b8fff20, transparent 52%);
+  pointer-events: none;
+  transition: opacity .3s;
+}
+body[data-page="home"] .home-services .service > * {
+  position: relative;
+  z-index: 1;
+}
+body[data-page="home"] .home-services .service:hover::after {
+  opacity: 1;
+}
+body[data-page="home"] .home-services .service-link {
+  display: inline-flex;
+  align-self: flex-start;
+  margin-top: auto;
+  padding-top: 16px;
+  color: #8bb6ff;
+  font: 10px/1.5 var(--mono);
+  letter-spacing: .04em;
+}
+body[data-page="home"] .home-services .service:hover .service-link {
+  color: #d9e7ff;
+}
+body[data-page="services"] #all-services {
+  padding: 88px 0 96px;
+  border-block: 1px solid #cddaf11a;
+  background: linear-gradient(180deg, #0c111c 0%, #0a0e17 100%);
+}
+body[data-page="services"] .section-heading {
+  max-width: 720px;
+  margin-bottom: 38px;
+}
+body[data-page="services"] .section-heading h2 {
+  max-width: 620px;
+  font-size: clamp(36px, 3.8vw, 49px);
+}
+body[data-page="services"] .section-heading p {
+  max-width: 590px;
+  font-size: 14px;
+  line-height: 1.75;
+}
+body[data-page="services"] .filterbar {
+  gap: 10px;
+  margin-bottom: 24px;
+}
+body[data-page="services"] .service-directory {
+  gap: 14px;
+}
+body[data-page="services"] .directory-card {
+  min-height: 248px;
+  padding: 25px;
+  border-radius: 10px;
+  background: linear-gradient(145deg, #141d30, #0e1422);
+}
+body[data-page="services"] .directory-card:hover {
+  transform: translateY(-3px);
+  border-color: #7caaff80;
+}
+body[data-page="services"] .directory-card .mono {
+  font-size: 10px;
+  line-height: 1.6;
+}
+body[data-page="services"] .directory-card .arrow {
+  font: 10px/1.5 var(--mono);
+  letter-spacing: .04em;
+}
+body[data-page="services"] .process-section {
+  padding: 28px 0 78px;
+}
+body[data-page="services"] .process-panel {
+  border-radius: 12px;
+  padding: 48px 54px;
+}
+body[data-page="services"] .process-grid {
+  gap: 32px;
+}
+body[data-page="services"] .process-step p {
+  font-size: 13px;
+  line-height: 1.7;
+}
+body[data-page="services"] .contactbox {
+  border-radius: 12px;
+  padding: 52px 56px;
+}
+@media (max-width: 1000px) {
+  body[data-page="home"] .stripinner {
+    gap: 10px;
+  }
+  body[data-page="home"] .home-services .service {
+    min-height: 250px;
+  }
+}
+@media (max-width: 720px) {
+  body[data-page] .infra-ambient-network {
+    opacity: .3;
+  }
+  body[data-page="home"] .home-services .service {
+    min-height: 230px;
+    padding: 21px;
+  }
+  body[data-page="services"] #all-services {
+    padding: 68px 0 72px;
+  }
+  body[data-page="services"] .process-section {
+    padding: 16px 0 62px;
+  }
+  body[data-page="services"] .process-panel {
+    padding: 30px 23px;
+  }
+  body[data-page="services"] .contactbox {
+    padding: 32px 24px;
+  }
+}
+
+/* Small type and interaction refinements across the main site pages. */
+body[data-page="about"] .timeline-item h3,
+body[data-page="approach"] .timeline-item h3 {
+  font-size: 17px;
+  line-height: 1.35;
+}
+
+body[data-page="home"] .home-services .service-link,
+body[data-page="services"] .directory-card .arrow {
+  font-size: 12px;
+  line-height: 1.5;
+  letter-spacing: .02em;
+}
+
+body[data-page="services"] .directory-card .mono {
+  font-size: 11px;
+  line-height: 1.55;
+}
+
+body[data-page="services"] .process-step p {
+  font-size: 15px;
+  line-height: 1.65;
+}
+
+body[data-page="contact"] .contact-form-field label {
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+body[data-page="contact"] .contact-form-field input,
+body[data-page="contact"] .contact-form-field textarea {
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+body[data-page="contact"] .contact-form-status {
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.js [data-reveal] {
+  transform: translateY(12px);
+  transition:
+    opacity .52s ease,
+    transform .52s cubic-bezier(.22, .61, .36, 1);
+}
+
+body[data-page] a,
+body[data-page] button {
+  transition-timing-function: cubic-bezier(.22, .61, .36, 1);
+}
+
+body[data-page="home"] .home-services .service:hover,
+body[data-page="services"] .directory-card:hover,
+body[data-page] .related-link:hover {
+  transform: translateY(-2px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .js [data-reveal],
+  .js [data-reveal].in-view {
+    opacity: 1;
+    transform: none;
+    transition: none;
+    transition-delay: 0ms;
+  }
+
+  body[data-page] svg animate,
+  body[data-page] svg animateMotion {
+    display: none;
+  }
+}
+
+/* Clearer reading scale for the site's primary page content. */
+body[data-page] {
+  font-size: 17px;
+}
+
+body[data-page] main p:not(.label):not(.mono) {
+  font-size: clamp(17px, calc(1rem + .22vw), 18.5px);
+  line-height: 1.72;
+}
+
+body[data-page] .page-hero .intro {
+  font-size: 18px;
+  line-height: 1.68;
+}
+
+body[data-page] main .home-services .service > p,
+body[data-page] main .worklist .work > p,
+body[data-page] main .fitgrid .fitcard > p,
+body[data-page] main .service-directory .directory-card p,
+body[data-page="services"] main .process-step p:not(.label):not(.mono) {
+  font-size: 16.5px;
+  line-height: 1.68;
+}
+
+body[data-page="contact"] main p.contact-form-status:not(.label):not(.mono) {
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+@media (max-width: 720px) {
+  body[data-page] main p:not(.label):not(.mono) {
+    font-size: 17px;
+    line-height: 1.7;
+  }
+
+  body[data-page] .page-hero .intro {
+    font-size: 17px;
+  }
+
+  body[data-page] main .home-services .service > p,
+  body[data-page] main .worklist .work > p,
+  body[data-page] main .fitgrid .fitcard > p,
+  body[data-page] main .service-directory .directory-card p,
+  body[data-page="services"] main .process-step p:not(.label):not(.mono) {
+    font-size: 16px;
+  }
+}
