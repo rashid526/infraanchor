@@ -542,7 +542,6 @@ body[data-page="about"] .timeline-item:nth-child(4) h3 {
 .contact-form-field-half { grid-column: span 1; }
 .contact-form-field-full,
 .contact-form-submit,
-.contact-form-privacy,
 .contact-form-status { grid-column: 1 / -1; }
 .contact-form-field label {
   color: var(--ink);
@@ -570,13 +569,7 @@ body[data-page="about"] .timeline-item:nth-child(4) h3 {
 }
 .contact-form-submit { justify-self: start; cursor: pointer; }
 .contact-form-submit:disabled { cursor: wait; opacity: .7; }
-.contact-form-privacy {
-  margin: 0;
-  color: var(--muted);
-  font-size: 10px;
-  line-height: 1.65;
-}
-.contact-form-privacy a { color: var(--peach); text-decoration: underline; text-underline-offset: 2px; }
+
 .contact-form-status {
   margin: 0;
   padding: 11px 13px;
